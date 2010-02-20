@@ -56,7 +56,7 @@ echo $font;
         <font size="+1"><?php @include ('message.php'); echo $notification_message; ?></font>
         Feel free to browse through our producers&#146; offerings below &ndash; everyone can take a tour of what is available.
         To actually start ordering, if you are already a registered member, just login below.  If you are not a registered
-        member yet, click <a href="../join.php">here</a> to see more information on joining the <?php echo ORGANIZATION_TYPE; ?> &ndash; producers and shoppers alike make up both the
+        member yet, click <a href="join.php">here</a> to see more information on joining the <?php echo ORGANIZATION_TYPE; ?> &ndash; producers and shoppers alike make up both the
         voting and nonvoting membership of the <?php echo ORGANIZATION_TYPE; ?>.
       </td>
     </tr>
