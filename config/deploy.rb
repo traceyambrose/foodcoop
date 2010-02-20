@@ -22,6 +22,17 @@ namespace :deploy do
   task :stop do ; end
   task :restart do ; end
   task :finalize_update do ; end
+  
+  task :write_htaccess do
+    dirs = %w(admin ajax members producers)
+    source_file = "#{current_path}/config/production.htaccess"
+    shop_path = "#{current_path}/public_html/shop/"
+    paths = [shop_path]
+    paths += dirs.map {|dir| shop_path + dir}
+    paths.each do |path|
+      run "cp #{source_file} #{path}"
+    end
+  end
 end
 
 after :deploy, "deploy:cleanup"
