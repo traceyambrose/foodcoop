@@ -18,7 +18,7 @@ $site_url               = 'http://foodcoop.tt.craigambrose.com';
 $food_coop_store_path   = '/';
 
                           // Internal file path to document_root
-$file_path              = '/Users/traceyambrose/Sites/foodcoop';
+$file_path              = '/home/ttnz/sites/foodcoop/current';
 
                           // Domain name -- used for email references
 $domainname             = 'foodcoop.tt.craigambrose.com';
