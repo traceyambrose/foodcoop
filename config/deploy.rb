@@ -26,11 +26,11 @@ namespace :deploy do
   task :write_htaccess do
     dirs = %w(admin ajax members producers)
     source_file = "#{release_path}/config/production.htaccess"
-    shop_path = "#{release_path}/public_html/shop/.htaccess"
+    shop_path = "#{release_path}/public_html/shop/"
     paths = [shop_path]
-    paths += dirs.map {|dir| shop_path + dir}
+    paths += dirs.map {|dir| shop_path + dir + '/'}
     paths.each do |path|
-      run "cp -f #{source_file} #{path}"
+      run "cp -f #{source_file} #{path}.htaccess"
     end
   end
   

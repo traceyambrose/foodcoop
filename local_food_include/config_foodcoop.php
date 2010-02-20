@@ -9,7 +9,7 @@ $current_version        = '1.5.3';
                           //    Mountain: America/Denver
                           //    Central:  America/Chicago
                           //    Eastern:  America/New_York
-$local_time_zone        = 'New Zealand/Auckland';
+$local_time_zone        = 'Pacific/Auckland';
 
                           // Base url is used for web references.  Do NOT include a trailing slash.
 $site_url               = 'http://localhost/~traceyambrose/foodcoop/public_html/shop';
