@@ -1,3 +1,3 @@
-php_value include_path '/home/ttnz/sites/foodcoop/local_food_include/:.'
+php_value include_path '/home/ttnz/sites/foodcoop/current/local_food_include/:.'
 DirectoryIndex index.php index.html index.htm
 php_value register_globals on
