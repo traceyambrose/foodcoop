@@ -51,8 +51,7 @@ echo $font;
   <table width="685" cellpadding="3" cellspacing="0" border="0">
     <tr>
       <td align="left"><?php echo $font;?>
-        Welcome to the <?php echo SITE_NAME; ?>&#146;s starting point for shopping!  Producers and Shoppers come together here on a
-          monthly basis to buy and sell <a href="category_list.php">local products</a>.
+        Welcome to the <?php echo SITE_NAME; ?>&#146;s food co-operative website. We will endeavor to provide you with quality local and organic produce on a weekly basis. You can find a list of available product <a href="category_list.php">here</a>.
         <br /><br />
         <font size="+1"><?php @include ('message.php'); echo $notification_message; ?></font>
         Feel free to browse through our producers&#146; offerings below &ndash; everyone can take a tour of what is available.
