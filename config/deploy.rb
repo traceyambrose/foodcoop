@@ -26,7 +26,7 @@ namespace :deploy do
   task :write_htaccess do
     dirs = %w(admin ajax members producers)
     source_file = "#{release_path}/config/production.htaccess"
-    shop_path = "#{release_path}/public_html/shop/"
+    shop_path = "#{release_path}/public_html/shop/.htaccess"
     paths = [shop_path]
     paths += dirs.map {|dir| shop_path + dir}
     paths.each do |path|
@@ -36,7 +36,7 @@ namespace :deploy do
   
   task :write_config_php do
     source_file = "#{release_path}/config/production.config_foodcoop.php"
-    destination_file = "#{release_path}/local_food_include/production.config_foodcoop.php"
+    destination_file = "#{release_path}/local_food_include/config_foodcoop.php"
     run "cp -f #{source_file} #{destination_file}"
   end
 end
