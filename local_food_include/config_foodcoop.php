@@ -12,10 +12,10 @@ $current_version        = '1.5.3';
 $local_time_zone        = 'New Zealand/Auckland';
 
                           // Base url is used for web references.  Do NOT include a trailing slash.
-$site_url               = 'http://foodcoop.tt.craigambrose.com';
+$site_url               = 'http://localhost/~traceyambrose/foodcoop/public_html/shop';
 
                           // Directory for the local food coop software on the website (typically /shop/)
-$food_coop_store_path   = '/';
+$food_coop_store_path   = '/~traceyambrose/foodcoop/public_html/shop/';
 
                           // Internal file path to document_root
 $file_path              = '/Users/traceyambrose/Sites/foodcoop';
@@ -33,7 +33,7 @@ $site_contact_info      = 'Atamai Village Council PO Box 321 Motueka';
 $site_mailing_address   = 'Atamai Village Council PO Box 321 Motueka';
 
                           // Directory for graphic files for the coop section of your website
-$site_graphics          = '/grfx/';
+$site_graphics          = '/~traceyambrose/foodcoop/public_html/shop/grfx/';
 
                           // Filename of your favicon (in the root directory)
 $favicon                = '/favicon.ico';
