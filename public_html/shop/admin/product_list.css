@@ -1,0 +1,249 @@
+<style>
+
+span {
+  /* bogus entry that is necessary for the next one (span.levelX)
+  to be seen, at least for Linux Galeon*/
+  }
+span.levelX {
+  display:block;
+  font-size:50%;
+  margin-top:-0.4em;
+  font-variant:normal;
+  }
+span.levelY {
+  font-size:80%;
+  }
+span.levelZ {
+  font-size:80%;
+  }
+
+
+/*  ul.cat0 .. ul.cat4 are absolute positions in the list being displayed */
+/*  li.cat0 .. li.cat4 are relative positions based on the offset value   */
+
+
+ul.cat0 {
+  margin-left:0em;
+  padding-left:0em;
+  list-style-type:none;
+  }
+ul.cat1 {
+  margin-left:0.7em;
+  padding-left:0em;
+  list-style-type:none;
+  }
+ul.cat2 {
+  margin-left:0.7em;
+  padding-left:0em;
+  list-style-type:none;
+  }
+ul.cat3 {
+  margin-left:0.7em;
+  padding-left:0em;
+  list-style-type:none;
+  }
+ul.cat4 {
+  margin-left:0.7em;
+  padding-left:0em;
+  list-style-type:none;
+  }
+
+
+
+ul.cat0 li {
+  font-family:arial,sans-serif;
+  font-variant:small-caps;
+  font-weight:bold;
+  font-size:1.5em;
+  }
+
+ul.cat1 li {
+  font-family:arial,sans-serif;
+  font-variant:normal;
+  font-weight:bold;
+  font-size:0.8em; /* This value cascades to nested list elements */
+  }
+
+ul.cat2 li {
+  font-family:arial,sans-serif;
+  font-variant:normal;
+  font-weight:normal;
+  }
+
+ul.cat3 li {
+  font-family:arial,sans-serif;
+  font-variant:normal;
+  font-weight:normal;
+  }
+
+ul.cat4 li {
+  font-family:arial,sans-serif;
+  font-variant:normal;
+  font-weight:normal;
+  }
+
+
+li.cat0, option.cat0 {
+  color:#004488;
+  }
+li.cat0 a {
+  color:#004488;
+  text-decoration:none;
+  }
+li.cat0 a:hover {
+  color:#444444;
+  text-decoration:underline;
+  }
+
+li.cat1, option.cat1 {
+  color:#336600;
+  }
+li.cat1 a {
+  color:#336600;
+  text-decoration:none;
+  }
+li.cat1 a:hover {
+  color:#444444;
+  text-decoration:underline;
+  }
+
+li.cat2, option.cat2 {
+  color:#553377;
+  }
+li.cat2 a {
+  color:#553377;
+  text-decoration:none;
+  }
+li.cat2 a:hover {
+  color:#444444;
+  text-decoration:underline;
+  }
+
+li.cat3, option.cat3 {
+  color:#884400;
+  font-style:italic;
+  }
+li.cat3 a {
+  color:#884400;
+  font-style:italic;
+  text-decoration:none;
+  }
+li.cat3 a:hover {
+  color:#444444;
+  font-style:italic;
+  text-decoration:underline;
+  }
+
+li.cat4, option.cat4 {
+  color:#008844;
+  }
+li.cat4 a {
+  color:#008844;
+  text-decoration:none;
+  }
+li.cat4 a:hover {
+  color:#444444;
+  text-decoration:underline;
+  }
+
+.taxable {
+  color: #a00;
+  font-weight: bold;
+  }
+
+/*
+
+li.cat0 {
+  font-family:arial,sans-serif;
+  font-variant:small-caps;
+  font-size:2em;
+  font-weight:bold;
+  color:#004488;
+  }
+li.cat0 a {
+  font-weight:bold;
+  text-decoration:none;
+  color:#004488;
+  }
+li.cat0 a:hover {
+  text-decoration:underline;
+  color:#002244;
+  }
+
+ul.cat1 {
+  list-style-type:none;
+  }
+li.cat1 {
+  font-family:arial,sans-serif;
+  font-size:1.3em;
+  font-weight:normal;
+  font-style:italic;
+  color:#336600;
+  }
+li.cat1 a {
+  text-decoration:none;
+  color:#336600;
+  }
+li.cat1 a:hover {
+  text-decoration:underline;
+  color:#113300;
+  }
+
+ul.cat2 {
+  list-style-type:none;
+  }
+li.cat2 {
+  font-family:arial,sans-serif;
+  font-size:1.1em;
+  font-weight:normal;
+  font-style:normal;
+  color:#553377;
+  }
+li.cat2 a {
+  text-decoration:none;
+  color:#553377;
+  }
+li.cat2 a:hover {
+  text-decoration:underline;
+  color:#332244;
+  }
+
+ul.cat3 {
+  list-style-type:none;
+  }
+li.cat3 {
+  font-family:arial,sans-serif;
+  font-size:1.0em;
+  font-style:italic;
+  color:#884400;
+  }
+li.cat3 a {
+  text-decoration:none;
+  color:#884400;
+  }
+li.cat3 a:hover {
+  text-decoration:underline;
+  color:442200;
+  }
+
+ul.cat4 {
+  list-style-type:none;
+  }
+li.cat4 {
+  font-family:arial,sans-serif;
+  font-size:0.8em;
+  font-weight:bold;
+  color:#008844;
+  }
+li.cat4 a {
+  text-decoration:none;
+  color:#008844;
+  }
+li.cat4 a:hover {
+  text-decoration:underline;
+  color:#004422;
+  }
+
+*/
+
+</style>

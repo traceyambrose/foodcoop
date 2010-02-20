@@ -1,0 +1,285 @@
+<?php
+$user_type = 'valid_c';
+include_once ("config_foodcoop.php");
+session_start();
+validate_user();
+
+include_once ("general_functions.php");
+
+$sqlr = '
+  SELECT
+    '.TABLE_ROUTE.'.route_id,
+    '.TABLE_ROUTE.'.route_name,
+    '.TABLE_ROUTE.'.route_desc,
+    '.TABLE_DELCODE.'.hub
+  FROM
+    '.TABLE_ROUTE.',
+    '.TABLE_DELCODE.'
+  WHERE
+    '.TABLE_ROUTE.'.route_id = '.TABLE_DELCODE.'.route_id
+  GROUP BY
+    '.TABLE_ROUTE.'.route_id
+  ORDER BY
+    '.TABLE_DELCODE.'.hub ASC,
+    '.TABLE_ROUTE.'.route_name ASC';
+$rsr = @mysql_query($sqlr,$connection) or die(mysql_error() . "<br><b>Error No: </b>" . mysql_errno());
+while ( $row = mysql_fetch_array($rsr) )
+  {
+    $route_id = $row['route_id'];
+    $route_name = $row['route_name'];
+    $route_desc = $row['route_desc'];
+    $sql_sum6 = '
+      SELECT
+        '.TABLE_BASKET_ALL.'.delivery_id,
+        '.TABLE_BASKET_ALL.'.basket_id,
+        '.TABLE_BASKET.'.basket_id,
+        '.TABLE_BASKET_ALL.'.delcode_id,
+        '.TABLE_BASKET.'.out_of_stock,
+        '.TABLE_BASKET.'.product_id,
+        '.TABLE_BASKET.'.future_delivery_id,
+        '.TABLE_DELCODE.'.route_id,
+        '.TABLE_DELCODE.'.delcode_id
+      FROM
+        '.TABLE_BASKET_ALL.',
+        '.TABLE_BASKET.',
+        '.TABLE_ROUTE.',
+        '.TABLE_DELCODE.'
+      WHERE
+        '.TABLE_BASKET_ALL.'.delivery_id ="'.$current_delivery_id.'"
+        AND '.TABLE_BASKET_ALL.'.basket_id = '.TABLE_BASKET.'.basket_id
+        AND '.TABLE_BASKET_ALL.'.delcode_id = '.TABLE_DELCODE.'.delcode_id
+        AND '.TABLE_DELCODE.'.route_id = "'.$route_id.'"
+        AND '.TABLE_BASKET.'.out_of_stock != "1"
+        AND
+          (
+            '.TABLE_BASKET.'.future_delivery_id ="0"
+            OR '.TABLE_BASKET.'.future_delivery_id ="'.$current_delivery_id.'"
+          )
+      GROUP BY
+        '.TABLE_BASKET_ALL.'.delivery_id';
+    $result_sum6 = @mysql_query($sql_sum6,$connection) or die(mysql_error() . "<br><b>Error No: </b>" . mysql_errno());
+    $num_mem = mysql_numrows($result_sum6);
+    if ( $num_mem )
+      {
+        $display .= '
+          <tr><td align="left" bgcolor="#AEDE86">
+          <b>Route: '.$route_name.'</b><br>'.$route_desc.'
+          </td></tr>';
+      }
+    else
+      {
+        $display .= "";
+      }
+    if ( $num_mem )
+      {
+        $sqlr2 = '
+          SELECT
+            '.TABLE_DELCODE.'.delcode_id,
+            '.TABLE_DELCODE.'.delcode,
+            '.TABLE_DELCODE.'.deldesc,
+            '.TABLE_DELCODE.'.route_id,
+            '.TABLE_DELCODE.'.hub
+          FROM
+            '.TABLE_DELCODE.'
+          WHERE
+            route_id = "'.$route_id.'"
+          GROUP BY
+            delcode_id
+          ORDER BY
+            delcode ASC';
+        $rsr2 = @mysql_query($sqlr2,$connection) or die(mysql_error() . "<br><b>Error No: </b>" . mysql_errno());
+        $num_del = mysql_numrows($rsr2);
+        while ( $row = mysql_fetch_array($rsr2) )
+          {
+            $delcode_id = $row['delcode_id'];
+            $delcode = $row['delcode'];
+            $deldesc = $row['deldesc'];
+            $hub = $row['hub'];
+            $display .= '
+              <tr><td align="left" bgcolor="#DDDDDD">
+              <b>Delivery Specifics: '.$delcode.' (Hub: '.$hub.')</b><br>'.$deldesc.'
+              </td></tr>';
+            $display_rt = '';
+            $sql = '
+              SELECT
+                '.TABLE_BASKET_ALL.'.*,
+                '.TABLE_MEMBER.'.*,
+                '.TABLE_BASKET.'.product_id,
+                '.TABLE_BASKET.'.out_of_stock,
+                '.TABLE_BASKET.'.future_delivery_id,
+                '.TABLE_DELCODE.'.*,
+                '.TABLE_BASKET_ALL.'.deltype as ddeltype
+              FROM
+                '.TABLE_BASKET_ALL.',
+                '.TABLE_MEMBER.',
+                '.TABLE_BASKET.',
+                '.TABLE_DELCODE.'
+              WHERE
+                '.TABLE_BASKET_ALL.'.delcode_id = "'.$delcode_id.'"
+                AND '.TABLE_DELCODE.'.delcode_id = "'.$delcode_id.'"
+                AND '.TABLE_BASKET_ALL.'.delivery_id = "'.$current_delivery_id.'"
+                AND '.TABLE_BASKET_ALL.'.member_id = '.TABLE_MEMBER.'.member_id
+                AND '.TABLE_BASKET_ALL.'.basket_id = '.TABLE_BASKET.'.basket_id
+                AND '.TABLE_BASKET.'.out_of_stock != "1"
+                AND
+                  (
+                    '.TABLE_BASKET.'.future_delivery_id ="0"
+                    OR '.TABLE_BASKET.'.future_delivery_id ="'.$current_delivery_id.'"
+                  )
+              GROUP BY
+                basket_id
+              ORDER BY
+                last_name ASC';
+            $rs = @mysql_query($sql,$connection) or die(mysql_error() . "<br><b>Error No: </b>" . mysql_errno());
+            $num_orders = mysql_numrows($rs);
+            while ( $row = mysql_fetch_array($rs) )
+              {
+                $basket_id = $row['basket_id'];
+                $member_id = $row['member_id'];
+                $last_name = $row['last_name'];
+                $first_name = $row['first_name'];
+                $business_name = stripslashes ($row['business_name']);
+                $deltype = $row['deltype'];
+                $truck_code = $row['truck_code'];
+                $storage_code = 'ALL'; // Storage code isn't available so set to some value for convert_route_code function.
+
+                $first_name_2 = $row['first_name_2'];
+                $last_name_2 = $row['last_name_2'];
+                $ddeltype = $row['ddeltype'];
+                $finalized = $row['finalized'];
+                $home_phone = $row['home_phone'];
+                $work_phone = $row['work_phone'];
+                $mobile_phone = $row['mobile_phone'];
+                $fax = $row['fax'];
+                $email_address = $row['email_address'];
+                $email_address_2 = $row['email_address_2'];
+                $product_quantity_of_member = $row['sum_pm'];
+                $address_line1 = $row['address_line1'];
+                $address_line2 = $row['address_line2'];
+                $city = $row['city'];
+                $state = $row['state'];
+                $zip = $row['zip'];
+                $work_address_line1 = $row['work_address_line1'];
+                $work_address_line2 = $row['work_address_line2'];
+                $work_city = $row['work_city'];
+                $work_state = $row['work_state'];
+                $work_zip = $row['work_zip'];
+                include("../func/show_name.php");
+
+                $display_rt .= '
+                  <li> <b>'.(convert_route_code($basket_id, $member_id, $last_name, $first_name, $business_name, $a_business_name, $hub, $delcode_id, $deltype, $truck_code, $storage_code, $show_mem, $show_mem2, $product_name, $quantity, $ordering_unit, $product_id, $item_price, $delcode)).'</b><br>
+                  <a href="customer_invoice.php?delivery_id=25&basket_id='.$basket_id.'&member_id='.$member_id.'">
+                  <b>'.$show_name.' (Mem#'.$member_id.')</b></b></a>';
+
+// THE ABOVE CODE SEEMS LIKE IT SHOULD BE MORE LIKE THIS (CURRENT_DELIVERY_ID)
+
+//                 $display_rt .= '
+//                   <li> <b>'."$hub-$member_id-$delcode_id $deltype-$truck_code".'</b><br>
+//                   <a href="customer_invoice.php?delivery_id='.$current_delivery_id.'&basket_id='.$basket_id.'&member_id='.$member_id.'">
+//                   <b>'.$show_name.' (Mem#'.$member_id.')</b></b></a>';
+
+                $display_rt .= '   <ul>';
+                if ( $ddeltype == 'W' )
+                  {
+                    $display_rt .= 'Work address: ';
+                    if ( $work_address_line1 )
+                      {
+                        $display_rt .= $work_address_line1;
+                      }
+                    else
+                      {
+                        $display_rt .= 'No work address available<br>';
+                      }
+                    if ( $work_address_line2 )
+                      {
+                        $display_rt .= ', '.$work_address_line2;
+                      }
+                    if ( $work_city || $work_state || $work_zip )
+                      {
+                        $display_rt .= ", $work_city, $work_state, $work_zip<br>";
+                      }
+                  }
+                else
+                  {
+                    $display_rt .= 'Home address: ';
+                    $display_rt .= $address_line1;
+                    if ( $address_line2 )
+                      {
+                        $display_rt .= ', '.$address_line2;
+                      }
+                      $display_rt .= ", $city, $state, $zip<br>";
+                  }
+                $display_rt .= 'Email: '.$email_address;
+                if ( $email_address_2 )
+                  {
+                    $display_rt .= ', Email2: '.$email_address_2;
+                  }
+                if ( $home_phone )
+                  {
+                    $display_rt .= ', Home: '.$home_phone;
+                  }
+                if ( $work_phone )
+                  {
+                    $display_rt .= ', Work: '.$work_phone;
+                  }
+                if ( $mobile_phone )
+                  {
+                    $display_rt .= ', Cell: '.$mobile_phone;
+                  }
+                if ( $fax )
+                  {
+                    $display_rt .= '", Fax: '.$fax;
+                  }
+                $display_rt .= "   </ul><br>";
+              }
+            if ( !$num_orders )
+              {
+                $display .= '<tr><td align="left">No orders here for this cycle.<br><br></td></tr>';
+              }
+            else
+              {
+                $display .= '
+                  <tr>
+                    <td align="left">
+                      <ul>
+                      '.$display_rt.'
+                      </ul>
+                    </td>
+                  </tr>';
+              }
+          }
+        $display .= '
+          <tr>
+            <td><hr></td>
+          </tr>';
+      }
+  }
+?>
+<?php
+$site_name = 'Food '.ucfirst (ORGANIZATION_TYPE);
+$base_url = '';
+$fontface = 'arial';
+$fontsize = '-1';
+$font = '<font face="arial" size="-1">';
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Local Food <? echo ucfirst (ORGANIZATION_TYPE); ?> - Shop</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+</head>
+<body bgcolor="#FFFFFF">
+<font face="<?php echo $fontface;?>" size="-1">
+  <!-- CONTENT BEGINS HERE -->
+<table bgcolor="#FFFFFF" cellspacing="2" cellpadding="2" border="0">
+  <tr>
+    <td align="left">
+      <h3>Route List: <?php echo $current_delivery_date;?></h3>
+    </td>
+  </tr>
+  <?php echo $display;?>
+</table>
+  <!-- CONTENT ENDS HERE -->
+<br><br>
+<?php include("template_footer.php");?>

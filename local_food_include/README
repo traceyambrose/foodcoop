@@ -1,0 +1,4 @@
+Versions of customer_invoice_template.php and tax_functions.php files are for reference only.  In order to try out those versions, link or copy the respective example file to the proper file.  You MUST have a customer_invoice_template.php and tax_functions.php file available for generating customer invoices.
+
+Those marked -01 are examples from Idaho's Bounty (www.idahosbounty.org)
+             -02 are from Nebraska Food Cooperative (www.nebraskafood.org)
