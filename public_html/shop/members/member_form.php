@@ -309,8 +309,6 @@ $display_form_text .= '
   Password: '.$password1.'
 
   Membership type: '.$membership_type_text.'
-  How you heard about '.SITE_NAME.': '.$how_heard_text.'
-      Specifically: '.$heard_other.'
 
   Interested in volunteering? '.$volunteer_check.'
 
@@ -507,23 +505,6 @@ $display_form_html .= '
         <th class="memberform">Section 5: Additional Information</th>
       </tr>
 
-      <tr>
-        <td>
-          <table>
-            <tr>
-              <td class="form_key" valign="top"><strong>How&nbsp;you&nbsp;heard&nbsp;about '.SITE_NAME.':</strong></td>
-              <td><select name="how_heard_id">'.$how_heard_options.'</select></td>
-            </tr>
-            <tr>
-              <td class="form_key" valign="top"><strong>Please&nbsp;give&nbsp;more&nbsp;detail:</strong></td>
-              <td>
-                <input maxlength="50" size="25" name="heard_other" value="'.$heard_other.'"><br>
-                What website, from whom, which publication/date, etc.?
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
 
       <tr>
         <td><input type="checkbox" name="volunteer" value="yes"'.$volunteer_check.'> YES! I&lsquo;m interested in volunteering to help '.SITE_NAME.'.</td>
