@@ -49,7 +49,7 @@
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-bottom:1px solid #000000;background-color:#FFFFFF;">
   <tr>
-    <td align="center">
+    <td align="center" class="header_wrap_container">
       <div id="header-wrap">
         <?php if (SHOW_HEADER_LOGO === true) { ?>
         <a href="<?php echo BASE_URL.PATH;?>">

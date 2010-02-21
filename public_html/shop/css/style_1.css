@@ -39,6 +39,10 @@ a:hover {
 
 #header-wrap {
 	background-color: #FFFEEE;
+	padding: 0;
+}
+td.header_wrap_container {
+	padding: 0;
 }
 
 /* $headerstyle(text) */
