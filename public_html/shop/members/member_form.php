@@ -667,8 +667,8 @@ if (count ($error_array) == 0 && $_POST['action'] == 'Submit') // For new member
       }
 
     if ($initial_cost > 0) $membership_disposition .= '
-      <p class="error_message">Please send your membership payment of $'.number_format ($initial_cost, 2).' to:<br><br>
-      '.SITE_MAILING_ADDR.'</p>';
+      <p class="error_message">Please deposir your membership payment of $'.number_format ($initial_cost, 2).' to:<br><br>
+     Atamai Foods Inc <br>00-0000-000000-000</p>';
     if ( PAYPAL_EMAIL && $initial_cost > 0 ) $membership_disposition .= '
       <p class="error_message">Or make a payment online through PayPal (opens in a new window)
       <form target="paypal" method="post" action="https://www.paypal.com/cgi-bin/webscr">
