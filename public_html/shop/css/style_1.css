@@ -32,6 +32,7 @@ a:hover {
 
 #header-wrap,#header_text,#header_graphic {
 	height: 110px;
+	border-bottom:35px solid #557F01;
 }
 
 /* Header background color/image */
@@ -57,6 +58,7 @@ a:hover {
 
 h1 {
 	color: #2f462b;
+	text-align: center;
 }
 
 h2 {
