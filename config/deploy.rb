@@ -21,7 +21,10 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart do ; end
-  task :finalize_update do ; end
+  
+  task :finalize_update do
+    run "chmod a+w #{release_path}/public_html/shop/producers"
+  end
   
   task :write_htaccess do
     dirs = %w(admin ajax members producers)
