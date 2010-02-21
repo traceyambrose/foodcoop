@@ -117,9 +117,6 @@ if ($_POST['action'] == 'Submit')
 
     if ( !$affirmation ) array_push ($error_array, 'You must accept the affirmation before becoming a member');
 
-    if ( !$how_heard_id ) array_push ($error_array, 'Let us know how you heard about '.SITE_NAME);
-
-    if ( !$heard_other ) array_push ($error_array, 'Tell us more about how you heard about us');
   }
 
 
