@@ -15,7 +15,7 @@ $local_time_zone        = 'Pacific/Auckland';
 $site_url               = 'http://localhost/~traceyambrose/foodcoop/public_html/shop';
 
                           // Directory for the local food coop software on the website (typically /shop/)
-$food_coop_store_path   = '/~traceyambrose/foodcoop/public_html/shop/';
+$food_coop_store_path   = '/Users/traceyambrose/Sites/foodcoop/public_html/shop/';
 
                           // Internal file path to document_root
 $file_path              = '/Users/traceyambrose/Sites/foodcoop';

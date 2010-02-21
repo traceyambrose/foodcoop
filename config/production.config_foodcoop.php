@@ -15,7 +15,7 @@ $local_time_zone        = 'New Zealand/Auckland';
 $site_url               = 'http://foodcoop.tt.craigambrose.com';
 
                           // Directory for the local food coop software on the website (typically /shop/)
-$food_coop_store_path   = '/';
+$food_coop_store_path   = '/home/ttnz/sites/foodcoop/current/public_html/shop/';
 
                           // Internal file path to document_root
 $file_path              = '/home/ttnz/sites/foodcoop/current';
