@@ -12,9 +12,7 @@
 	  color: #000000;
 	  padding-right: 5px;
 	  }
-	em {
-	  color: #758954;
-	  }
+	
 	table.proddata {
 	  font-size: 1.2em;
 	  border: 1px solid black;
