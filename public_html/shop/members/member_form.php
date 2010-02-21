@@ -96,9 +96,6 @@ if ($_POST['action'] == 'Submit')
         $password2 = '';
       }
 
-    $captcha = new Securimage();
-    if ($captcha->check($human_check) != true) array_push ($error_array, 'Enter the human validation text');
-
     $query = '
       SELECT
         *
@@ -459,8 +456,6 @@ $display_form_html .= '
             <tr>
               <td class="form_key"><strong>Username:</strong></td>
               <td><input maxlength="20" size="25" name="username_m" value="'.$username_m.'"></td>
-              <td class="form_key" rowspan="3" valign="top"><strong>Enter the word</strong><br><input maxlength="10" size="10" name="human_check" value=""></td>
-              <td rowspan="3" align="center"><img src="securimage_show.php?sid='.time().'" alt="Human validation text"><br>Human validation text</td>
             </tr>
             <tr>
               <td class="form_key"><strong>Password:</strong></td>

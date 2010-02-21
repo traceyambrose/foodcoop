@@ -42,8 +42,8 @@
 	  border: 1px solid #ccc;
 	  }
 	</style>
-	<link href="css/template.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="css/style_1.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="<?php echo BASE_URL.PATH;?>css/template.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="<?php echo BASE_URL.PATH;?>css/style_1.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">

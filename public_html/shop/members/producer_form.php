@@ -806,7 +806,7 @@ if (count ($error_array) == 0 && $_POST['action'] == 'Submit') // For new member
 
     mail ($email_to, $email_subject, $email_body, $email_headers);
 
-    $file = fopen (FILE_PATH.PATH.'producers/'.strtolower($producer_id).".php", "w");
+    $file = fopen (FILE_PATH.'/public_html/shop/producers/'.strtolower($producer_id).".php", "w");
 
     if($file)
       {

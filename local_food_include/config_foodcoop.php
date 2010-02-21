@@ -12,10 +12,10 @@ $current_version        = '1.5.3';
 $local_time_zone        = 'Pacific/Auckland';
 
                           // Base url is used for web references.  Do NOT include a trailing slash.
-$site_url               = 'http://localhost/~traceyambrose/foodcoop/public_html/shop';
+$site_url               = 'http://localhost/~traceyambrose/foodcoop/public_html';
 
                           // Directory for the local food coop software on the website (typically /shop/)
-$food_coop_store_path   = '/public_html/shop/';
+$food_coop_store_path   = '/shop/';
 
                           // Internal file path to document_root
 $file_path              = '/Users/traceyambrose/Sites/foodcoop';
