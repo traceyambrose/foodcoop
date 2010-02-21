@@ -59,8 +59,6 @@ if ($_POST['action'] == 'Submit' || $_POST['action'] == 'Update')
 
     if ( !$first_name || !$last_name ) array_push ($error_array, 'First and last name are required');
 
-    if ( !$address_line1 || !$city || ! $state || !$zip ) array_push ($error_array, 'A full home address is required');
-
     if ( !$county ) array_push ($error_array, 'County of residence is required');
 
     if ( !$home_phone && !$mobile_phone ) array_push ($error_array, 'Either home or mobile phone number is required');
@@ -667,7 +665,7 @@ if (count ($error_array) == 0 && $_POST['action'] == 'Submit') // For new member
       }
 
     if ($initial_cost > 0) $membership_disposition .= '
-      <p class="error_message">Please deposir your membership payment of $'.number_format ($initial_cost, 2).' to:<br><br>
+      <p class="error_message">Please deposit your membership payment of $'.number_format ($initial_cost, 2).' to:<br><br>
      Atamai Foods Inc <br>00-0000-000000-000</p>';
     if ( PAYPAL_EMAIL && $initial_cost > 0 ) $membership_disposition .= '
       <p class="error_message">Or make a payment online through PayPal (opens in a new window)
